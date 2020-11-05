@@ -1,0 +1,108 @@
+<div class="form-container">
+  <form [formGroup]="contactFormGroup" #contactForm="ngForm" (submit)="submit()">
+    <!-- Full name -->
+    <div class="full-name">
+      <mat-form-field hintLabel="{{'max-chars' | translate: {max: firstNameInput.maxLength} }}" appearance="outline">
+        <mat-label>{{'first-name' | translate}}</mat-label>
+        <input matInput maxlength="20" formControlName="firstName" #firstNameInput>
+        <mat-hint align="end">{{firstName.value?.length || 0}}/20</mat-hint>
+        <mat-error>{{'error.first-name-required' | translate }}  </mat-error>
+      </mat-form-field>
+      <mat-form-field hintLabel="{{'max-chars' | translate: {max: lastNameInput.maxLength} }}" appearance="outline">
+        <mat-label>{{'last-name' | translate}}</mat-label>
+        <input matInput maxlength="20" formControlName="lastName" #lastNameInput>
+        <mat-hint align="end">{{lastName.value?.length || 0}}/20</mat-hint>
+        <mat-error>{{'error.last-name-required' | translate }}</mat-error>
+      </mat-form-field>
+    </div>
+    <!-- Email -->
+    <mat-form-field appearance="outline">
+      <mat-label>{{'email' | translate }} </mat-label>
+      <input matInput formControlName="email">
+      <mat-error>{{emailError | translate}}</mat-error>
+    </mat-form-field>
+    <br>
+    <!-- Phones -->
+    <div formArrayName="phones">
+      <div class="phone-input-container" *ngFor="let phone of phones.controls; index as i, first as isFirst">
+        <mat-form-field appearance="outline">
+          <mat-label>{{'phone-with-index' | translate:{'index': i + 1} }}</mat-label>
+          <input matInput [formControlName]="i">
+          <mat-error>{{getPhoneError(i) | translate}}</mat-error>
+        </mat-form-field>
+        <button *ngIf="isFirst" type="button" mat-button matSuffix mat-icon-button aria-label="Add phone"
+                (click)="addPhoneControl()">
+          <mat-icon>add</mat-icon>
+        </button>
+        <button *ngIf="!isFirst" type="button" mat-button matSuffix mat-icon-button aria-label="Remove phone"
+                (click)="deletePhoneControl(i)">
+          <mat-icon>remove</mat-icon>
+        </button>
+        <br>
+      </div>
+    </div>
+    <!-- Birth date -->
+    <mat-form-field appearance="outline">
+      <mat-label>{{'birth-date' | translate}}</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="birthDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error>{{'error.date-format' | translate}}</mat-error>
+    </mat-form-field>
+    <br>
+    <!-- Address -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{'address' | translate}}</mat-panel-title>
+        <mat-panel-description>
+          {{'type-address' | translate}}
+          <mat-icon>home</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div formGroupName="address">
+        <mat-form-field appearance="outline">
+          <mat-label>{{'address' | translate}}</mat-label>
+          <input matInput formControlName="address">
+          <mat-error>{{'error.address-required' | translate}}</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>{{'address-complement' | translate}}</mat-label>
+          <input matInput formControlName="complement">
+        </mat-form-field>
+        <br>
+        <div class="address-zipcode-city">
+          <mat-form-field appearance="outline">
+            <mat-label>{{'zipcode' | translate}}</mat-label>
+            <input matInput formControlName="zipcode">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{'city' | translate}}</mat-label>
+            <input matInput formControlName="city">
+            <mat-error>{{'error.city-required' | translate}}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-expansion-panel>
+    <br>
+    <mat-form-field appearance="outline">
+      <mat-label>{{'website' | translate}}</mat-label>
+      <input matInput formControlName="website">
+    </mat-form-field>
+    <!-- Company -->
+    <div formGroupName="company">
+      <mat-form-field appearance="outline">
+        <mat-label>{{'company' | translate}}</mat-label>
+        <mat-select formControlName="siret">
+          <mat-option *ngFor="let company of companies" [value]="company.siret">{{company.name}}</mat-option>
+        </mat-select>
+        <mat-error>{{'error.company-required' | translate}}</mat-error>
+      </mat-form-field>
+    </div>
+    <!-- Submit button -->
+    <div class="submit-button-container">
+      <button type="button" mat-raised-button color="primary" (click)="resetForm()">{{'reset' | translate }}</button>
+      <button mat-raised-button color="primary">{{'save' | translate }}</button>
+    </div>
+  </form>
+</div>

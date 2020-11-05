@@ -1,0 +1,18 @@
+.selected-language-container {
+  width: 100%;
+  opacity: 1;
+}
+
+.mat-tab-link:last-child{
+  justify-content: flex-end;
+}
+.selected-language mat-icon {
+  vertical-align: middle;
+}
+
+.mat-select {
+ width: 50px;
+}
+
+
+

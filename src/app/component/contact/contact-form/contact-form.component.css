@@ -1,0 +1,57 @@
+.form-container {
+  max-width: 800px;
+  min-width: 100px;
+  margin: auto;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.full-name,
+.address-zipcode-city {
+  display: flex;
+  justify-content: space-between;
+}
+
+.full-name .mat-form-field {
+  max-width: 49.5%;
+}
+
+.address-zipcode-city .mat-form-field:first-child {
+  width: 40%;
+}
+
+.address-zipcode-city .mat-form-field:last-child {
+  width: 59%;
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.submit-button-container button {
+  width: 15%;
+  margin-left: 2%;
+}
+
+.phone-input-container {
+  display: flex;
+}
+
+.phone-input-container button {
+  margin: 0.5em;
+}
+
+.mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-expansion-panel {
+  background: transparent;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, .12) !important;
+}

@@ -1,0 +1,15 @@
+.container {
+  min-width: 100px;
+  width: 80%;
+  margin: auto;
+  background: #FEFEFE;
+}
+
+.nav-content {
+  margin: 8px 8px;
+}
+
+html:lang('ar') * {
+  text-align: right;
+  text-align: start!important;
+}

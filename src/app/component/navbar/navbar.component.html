@@ -1,0 +1,17 @@
+<nav mat-tab-nav-bar>
+  <a mat-tab-link *ngFor="let link of links" [routerLink]="[link.path]"
+     (click)="activeLink = link.name"
+     [active]="activeLink == link.name" translate="">{{link.name}}</a>
+  <div class="selected-language-container mat-tab-link">
+    <mat-select [(value)]="selectedLanguage" (selectionChange)="changeTranslateLanguage()">
+      <mat-select-trigger class="selected-language">
+        <mat-icon [svgIcon]="selectedLanguage.icon"></mat-icon>
+      </mat-select-trigger>
+      <mat-option *ngFor="let language of languages" [value]="language">
+        <mat-icon [svgIcon]="language.icon"></mat-icon>
+        <span>{{language.name}}</span>
+      </mat-option>
+    </mat-select>
+  </div>
+
+</nav>
