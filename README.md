@@ -29,7 +29,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Components
 
 This app containe a form with validation.
-Navigation bar with routing & translate language chooser
-List of Cards with data
-Table with paging
-Custom mat-icons
+Navigation bar with routing & translate language chooser.
+List of Cards with data.
+Table with paging.
+Custom mat-icons.
+
+
